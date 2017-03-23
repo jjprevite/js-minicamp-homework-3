@@ -116,9 +116,10 @@ function sumUserPostLikes(user) {
   //each post object has an integer property called 'likes'
   //sum together the likes from all the post objects
   //return the sum
+  //This one was tough. I figured it out by looking at other solutions. I had to change my statement 2, the condition that runs the block. I had to change it from user.length to user.posts.length because the posts were the objects were I needed to get information.
   var sum = 0;
-  for (var i = 0; i < user.length; i++) {
-    sum += user['posts'][i]['likes'];
+  for (var i = 0; i < user.posts.length; i++) {
+    sum += user.posts[i].likes;
   } return sum;
   
 }
@@ -131,6 +132,12 @@ function addCalculateDiscountPriceMethod(storeItem) {
   //price -> 20
   //discountPercentage -> .2
   //discountPrice = 20 - (20 * .2)
+  
+  storeItem.calculateDiscountPrice = function () {
+    return storeItem.price -  (storeItem.price * storeItem.discountPercentage);
+  };
+  
+  return storeItem;
 }
 
 
